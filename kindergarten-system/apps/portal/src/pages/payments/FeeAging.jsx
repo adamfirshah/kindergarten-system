@@ -1,0 +1,12 @@
+import { useEffect, useState } from 'react'
+import { supabase } from '../../lib/supabase'
+const money=(v)=>new Intl.NumberFormat('en-MY',{style:'currency',currency:'MYR'}).format(v)
+export default function FeeAging(){
+ const [page,setPage]=useState(0)
+ const [state,setState]=useState(null)
+ useEffect(()=>{let active=true;supabase.rpc('fee_aging_report',{page_number:page}).then(({data,error})=>{if(active)setState({page,data,error:error?.message})}).catch((error)=>{if(active)setState({page,error:error.message})});return()=>{active=false}},[page])
+ const current=state?.page===page?state:null
+ if(!current)return <p role="status" className="p-5">Loading outstanding invoices…</p>
+ if(current.error)return <p role="alert" className="p-5 text-red-700">{current.error}</p>
+ return <section className="mt-5 space-y-4"><h3 className="text-xl font-bold">Outstanding invoices · {current.data.as_of}</h3><p className="text-sm text-gray-600">Age is calculated from the due date in Malaysia time. Proof awaiting verification remains unpaid. Partial invoices need a balance check and are excluded from monetary totals.</p><div className="grid gap-3 sm:grid-cols-3">{current.data.buckets.map((b)=><article className="rounded-2xl bg-white p-4" key={b.bucket}><p>{b.bucket}</p><p className="mt-2 text-xl font-bold">{b.amount===null?'Balance unconfirmed':money(b.amount)}</p><p className="text-sm text-gray-500">{b.count} invoices</p></article>)}</div><div className="overflow-x-auto rounded-2xl bg-white p-4"><table className="w-full text-left text-sm"><thead><tr>{['Invoice','Student / branch','Due','Amount','Age / status'].map((h)=><th className="p-3" key={h}>{h}</th>)}</tr></thead><tbody>{current.data.rows.map((r)=><tr className="border-t" key={r.id}><td className="p-3">{r.invoice_no}</td><td className="p-3">{r.fee_student_name}<br/>{r.fee_branch_name}</td><td className="p-3">{r.due_date??'Missing'}</td><td className="p-3">{r.status==='partial'?'Balance unconfirmed':money(r.amount)}</td><td className="p-3">{r.bucket}{r.awaiting_verification&&<p>Awaiting verification</p>}</td></tr>)}</tbody></table>{!current.data.total&&<p className="p-4">No outstanding invoices.</p>}</div><div className="flex justify-between"><button disabled={page===0} onClick={()=>setPage(page-1)}>Previous</button><span>Page {page+1}</span><button disabled={(page+1)*10>=current.data.total} onClick={()=>setPage(page+1)}>Next</button></div></section>
+}
