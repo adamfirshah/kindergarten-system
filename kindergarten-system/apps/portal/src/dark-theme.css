@@ -1,0 +1,187 @@
+/* Shared portal and admin dark palette. Semantic status badges retain their colours. */
+[data-theme="dark"] .border-\[\#1D3023\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#1D3023\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#202020\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#202020\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#222\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#222\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#242424\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#242424\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#2a2a2a\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#2a2a2a\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#333\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#333\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#363636\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#363636\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#37583F\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#37583F\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#444\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#444\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#48634B\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#48634B\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#555\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#555\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#666\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#666\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#68624C\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#68624C\] { color: #faf4e8; }
+[data-theme="dark"] .border-\[\#777\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#777\] { color: #b8c5bb; }
+[data-theme="dark"] .border-\[\#888\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#888\] { color: #b8c5bb; }
+[data-theme="dark"] .border-\[\#8B8B8B\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#8B8B8B\] { color: #b8c5bb; }
+[data-theme="dark"] .border-\[\#999\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#999\] { color: #b8c5bb; }
+[data-theme="dark"] .border-\[\#AAA\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#AAA\] { color: #b8c5bb; }
+[data-theme="dark"] .border-\[\#B0B0B0\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#B0B0B0\] { color: #b8c5bb; }
+[data-theme="dark"] .border-\[\#BDBDBD\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#BDBDBD\] { color: #b8c5bb; }
+[data-theme="dark"] .border-\[\#C8E6C9\] { border-color: #405246; }
+[data-theme="dark"] .border-\[\#CCC\] { border-color: #405246; }
+[data-theme="dark"] .text-\[\#CCC\] { color: #b8c5bb; }
+[data-theme="dark"] .bg-\[\#DADADA\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#DADADA\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#DDD\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#DDD\] { border-color: #405246; }
+[data-theme="dark"] .border-\[\#DDDCD2\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E0F0E3\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E0F0E3\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E1E1E1\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E1E1E1\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E3F2FD\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E3F2FD\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E5E5DF\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E5E5DF\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E5E5E5\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E5E5E5\] { border-color: #405246; }
+[data-theme="dark"] .border-\[\#E7E3CD\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E8E8E1\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E8E8E1\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E8E8E8\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E8E8E8\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E8F5E9\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E8F5E9\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#E9F7EF\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#E9F7EF\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#EAEAE3\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#EAEAE3\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#EBEBEB\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#EBEBEB\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#ECECE7\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#ECECE7\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#ECEFF1\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#ECEFF1\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#EEE\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#EEE\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#EEEDE8\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#EEEDE8\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#EFEFEA\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#EFEFEA\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F0F0EB\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F0F0EB\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F0F0F0\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F0F0F0\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F2F0DF\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F2F0DF\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F2F2EE\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F2F2EE\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F2F2EF\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F2F2EF\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F4F0E5\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F4F0E5\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F4F4ED\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F4F4ED\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F7F6F2\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F7F6F2\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F7F7F2\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F7F7F2\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F7F7F4\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F7F7F4\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F8F8F4\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F8F8F4\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#F8F8F5\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#F8F8F5\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FAF4E7\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FAF4E7\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FAF4E8\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FAF4E8\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FCFCF8\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FCFCF8\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FDECEC\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FDECEC\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFEBEE\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFEBEE\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFF0EC\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFF0EC\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFF3E0\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFF3E0\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFF5F5\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFF5F5\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFF8E1\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFF8E1\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFF8F8\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFF8F8\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFFBE8\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFFBE8\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFFDF3\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFFDF3\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFFDF4\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFFDF4\] { border-color: #405246; }
+[data-theme="dark"] .bg-\[\#FFFDF5\] { background-color: #202e26; }
+[data-theme="dark"] .border-\[\#FFFDF5\] { border-color: #405246; }
+
+[data-theme="dark"] { color-scheme: dark; --bg:#142019; --text:#c5d0c7; --text-h:#faf4e8; --border:#405246; --accent:#c3d3a4; }
+[data-theme="dark"] body { background:#142019; color:#c5d0c7; }
+[data-theme="dark"] .bg-white { background-color:#202e26; }
+[data-theme="dark"] .text-black { color:#faf4e8; }
+[data-theme="dark"] .dashboard-shell h1,
+[data-theme="dark"] .dashboard-shell h2,
+[data-theme="dark"] .dashboard-shell h3,
+[data-theme="dark"] .dashboard-shell h4,
+[data-theme="dark"] .login-shell h1 { color:#faf4e8; }
+[data-theme="dark"] .text-\[\#174B2B\] { color:#faf4e8; }
+[data-theme="dark"] .bg-\[\#C3D3A4\],
+[data-theme="dark"] .bg-\[\#C3D3A4\] .text-\[\#174B2B\],
+[data-theme="dark"] .bg-\[\#C3D3A4\] h1,
+[data-theme="dark"] .bg-\[\#C3D3A4\] h2,
+[data-theme="dark"] .bg-\[\#C3D3A4\] h3 { color:#174b2b; }
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="dark"] select,
+[data-theme="dark"] textarea { background-color:#18251d; color:#faf4e8; border-color:#526557; }
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder { color:#9cac9f; }
+[data-theme="dark"] .text-gray-400,
+[data-theme="dark"] .text-gray-500,
+[data-theme="dark"] .text-gray-600 { color:#b8c5bb; }
+[data-theme="dark"] .hover\:bg-\[\#F2F0DF\]:hover,
+[data-theme="dark"] .hover\:bg-\[\#FAF4E7\]:hover,
+[data-theme="dark"] .hover\:bg-\[\#F4F0E5\]:hover { background-color:#354838; }
+.theme-toggle { display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 12px;border-radius:999px;border:1px solid #cbd6bf;background:#fffcf4;color:#174b2b;font:inherit;font-size:12px;font-weight:650;cursor:pointer;flex-shrink:0; }
+.theme-toggle:focus-visible { outline:3px solid #638753;outline-offset:3px; }
+[data-theme="dark"] .theme-toggle { background:#26392c;border-color:#526557;color:#faf4e8; }
+.login-theme-control { position:absolute;top:18px;right:20px;z-index:40; }
+@media(max-width:480px) { .theme-toggle span { display:none; } }
+
+/* Give navigation its own deeper surface, separate from workspace cards. */
+[data-theme="dark"] .portal-sidebar-panel,
+[data-theme="dark"] .portal-topbar {
+  background-color: #101e16;
+  border: 1px solid #354b3c;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+}
+[data-theme="dark"] .portal-topbar {
+  border-radius: 24px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+[data-theme="dark"] .portal-sidebar-panel button:focus-visible {
+  outline: 2px solid #c3d3a4;
+  outline-offset: 2px;
+}
+@media(max-width:640px) {
+  [data-theme="dark"] .portal-topbar { padding: 12px; gap: 12px; }
+}

@@ -1,28 +1,39 @@
 {
   "name": "kindergarten-system",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "npm run dev --workspace=@kindergarten/portal",
+    "dev:landing": "npm run dev --workspace=@kindergarten/landing",
+    "dev:portal": "npm run dev --workspace=@kindergarten/portal",
+    "dev:admin": "npm run dev --workspace=@kindergarten/admin",
+    "build": "npm run build --workspaces --if-present",
+    "build:landing": "npm run build --workspace=@kindergarten/landing",
+    "build:portal": "npm run build --workspace=@kindergarten/portal",
+    "build:admin": "npm run build --workspace=@kindergarten/admin",
     "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.108.2",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "preview:landing": "npm run preview --workspace=@kindergarten/landing",
+    "preview:portal": "npm run preview --workspace=@kindergarten/portal",
+    "preview:admin": "npm run preview --workspace=@kindergarten/admin",
+    "test:db": "node scripts/test-database.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
+    "autoprefixer": "^10.5.2",
     "eslint": "^10.5.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.6.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1",
     "vite": "^8.1.0"
   }
 }
