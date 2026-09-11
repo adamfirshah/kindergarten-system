@@ -104,6 +104,8 @@ const features = [
 
 export function LandingApp() {
   const sceneRef = useRef(null)
+  const menuButtonRef = useRef(null)
+  const [menuOpen, setMenuOpen] = useState(false)
   const [rolesOpen, setRolesOpen] = useState(false)
   const [language, setLanguage] = useState('en')
   const t = text => language === 'en' ? (translations[text] ?? text) : text === 'Join Us' ? 'Daftar' : text
@@ -118,7 +120,7 @@ export function LandingApp() {
   const [review, setReview] = useState(false)
   const [details, setDetails] = useState({ kindergarten: '', name: '', email: '', phone: '' })
   useEffect(() => {
-    const navigate = () => { setRoute(window.location.hash); if (window.location.hash.startsWith('#/')) window.scrollTo(0, 0) }
+    const navigate = () => { setRoute(window.location.hash); setMenuOpen(false); setRolesOpen(false); if (window.location.hash.startsWith('#/')) window.scrollTo(0, 0) }
     window.addEventListener('hashchange', navigate)
     return () => window.removeEventListener('hashchange', navigate)
   }, [])
@@ -135,6 +137,12 @@ export function LandingApp() {
     window.addEventListener('scroll', update, { passive: true })
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', update) }
   }, [route])
+  useEffect(() => {
+    const viewport = window.matchMedia('(max-width: 768px)')
+    const closeMenu = () => { setMenuOpen(false); setRolesOpen(false) }
+    viewport.addEventListener('change', closeMenu)
+    return () => viewport.removeEventListener('change', closeMenu)
+  }, [])
   const joining = route.startsWith('#/join')
   const infoPage = route.startsWith('#/what-we-do') ? 'roles' : route === '#/faqs' ? 'faq' : null
   const plan = plans.find(item => item.code === selected)
@@ -142,8 +150,21 @@ export function LandingApp() {
   const portalUrl = import.meta.env.VITE_PORTAL_URL || 'http://localhost:5174'
   return <><div ref={sceneRef} className={`page-shell ${!joining && !infoPage ? 'home-scene' : 'inner-scene'}`}>
     {!joining && !infoPage && <HeroVideo language={language} />}
-    <header className="header">
-      <nav className="nav-left" aria-label={language === 'en' ? 'Explore' : 'Terokai'}>
+    <header className={`header${menuOpen ? ' menu-open' : ''}`} onKeyDown={event => {
+      if (event.key === 'Escape' && menuOpen) {
+        setMenuOpen(false)
+        setRolesOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }} onClick={event => {
+      if (event.target.closest('a, .nav-join')) { setMenuOpen(false); setRolesOpen(false) }
+    }}>
+      <button ref={menuButtonRef} type="button" className="menu-toggle" aria-expanded={menuOpen} aria-controls="landing-explore landing-navigation" aria-label={language === 'en' ? (menuOpen ? 'Close menu' : 'Open menu') : (menuOpen ? 'Tutup menu' : 'Buka menu')} onClick={() => { setMenuOpen(!menuOpen); setRolesOpen(false) }}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <path d={menuOpen ? 'M6 6l12 12M6 18L18 6' : 'M4 6h16M4 12h16M4 18h16'} />
+        </svg>
+      </button>
+      <nav id="landing-explore" className="nav-left" aria-label={language === 'en' ? 'Explore' : 'Terokai'}>
         <a href="#/what-we-do">{language === 'en' ? 'What We Do' : 'Tentang Kami'}</a>
         <div className="roles-dropdown" onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setRolesOpen(false) }} onKeyDown={event => { if (event.key === 'Escape') { setRolesOpen(false); event.currentTarget.querySelector('button').focus() } }}>
           <button type="button" aria-expanded={rolesOpen} aria-controls="roles-navigation" onClick={() => setRolesOpen(!rolesOpen)}>{language === 'en' ? 'Who It’s For' : 'Untuk Siapa'} <span aria-hidden="true">⌄</span></button>
@@ -151,7 +172,7 @@ export function LandingApp() {
         </div>
       </nav>
       <a className="brand" href="#/" aria-label="PAPA home"><img src={portalLogo} alt="PAPA" /></a>
-      <nav className="nav-right" aria-label={t("Navigasi utama")}>
+      <nav id="landing-navigation" className="nav-right" aria-label={t("Navigasi utama")}>
         <a href="#/faqs">{language === 'en' ? 'FAQs' : 'Soalan Lazim'}</a>
         <a href={portalUrl}>{t("Log masuk ↗")}</a>
         <button className="nav-join" onClick={() => join()}>{t("Join Us")}</button>

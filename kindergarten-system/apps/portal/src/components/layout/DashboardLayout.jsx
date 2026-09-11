@@ -4,7 +4,7 @@ import ThemeToggle from '../ThemeToggle'
 import RoleDashboard from './RoleDashboard'
 import OnboardingChecklist from './OnboardingChecklist'
 import MasterDataManagement from '../../pages/master/MasterDataManagement'
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { canAccessModule } from "../../config/permissions";
 import BranchManagement from "../../pages/branches/BranchManagement";
@@ -111,12 +111,13 @@ function Sidebar({
   onToggleCollapse,
   activeId,
   onSelect,
+  mobile = false,
 }) {
   const flatItems = sidebarNav.sections.flatMap((section) => section.items);
 
   return (
     <aside
-      className={`flex shrink-0 flex-col py-6 transition-all duration-300 ${
+      className={`${mobile ? "mobile-sidebar" : "desktop-sidebar"} flex shrink-0 flex-col py-6 transition-all duration-300 ${
         collapsed ? "w-[72px]" : "w-[240px]"
       }`}
     >
@@ -124,12 +125,12 @@ function Sidebar({
         <button
           type="button"
           onClick={onToggleCollapse}
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-label={mobile ? "Close navigation" : collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          title={mobile ? "Close navigation" : collapsed ? "Expand sidebar" : "Collapse sidebar"}
           aria-expanded={!collapsed}
           className="sidebar-collapse-toggle"
         >
-          {collapsed ? <IconChevronRight /> : <IconChevronLeft />}
+          {mobile ? <span aria-hidden="true">✕</span> : collapsed ? <IconChevronRight /> : <IconChevronLeft />}
         </button>
 
         <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
@@ -174,9 +175,12 @@ function Sidebar({
   );
 }
 
-function Header({ pageTitle, userName, roleLabel, showTitle, onProfile }) {
+function Header({ pageTitle, userName, roleLabel, showTitle, onProfile, onOpenMenu }) {
   return (
     <header className="portal-topbar flex items-center gap-4 px-2 pb-5 pt-1">
+      <button type="button" className="mobile-menu-toggle" onClick={onOpenMenu} aria-label="Open navigation" aria-haspopup="dialog" aria-controls="mobile-navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
       {showTitle && (
         <>
           <div className="flex shrink-0 items-center gap-2.5">
@@ -194,7 +198,7 @@ function Header({ pageTitle, userName, roleLabel, showTitle, onProfile }) {
       )}
 
       <div
-        className={`relative w-full max-w-md ${showTitle ? "mx-auto flex-1" : "flex-1"}`}
+        className={`portal-search relative w-full max-w-md ${showTitle ? "mx-auto flex-1" : "flex-1"}`}
       >
         <IconSearch className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#999]" />
         <input
@@ -403,6 +407,13 @@ function MainContent({
 
 export default function DashboardLayout({ config, sidebarNav }) {
   const { session, signOut, userRole } = useAuth();
+  const mobileMenuRef = useRef(null);
+  useEffect(() => {
+    const viewport = window.matchMedia('(max-width: 540px)');
+    const closeOnResize = () => mobileMenuRef.current?.close();
+    viewport.addEventListener('change', closeOnResize);
+    return () => viewport.removeEventListener('change', closeOnResize);
+  }, []);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [activeId, setActiveId] = useState(sidebarNav.dashboard.id);
   const [selectedBranchId, setSelectedBranchId] = useState(null);
@@ -420,6 +431,7 @@ export default function DashboardLayout({ config, sidebarNav }) {
 
   function handleSelectNav(id) {
     if (userRole && !canAccessModule(userRole, id)) return;
+    mobileMenuRef.current?.close();
     setActiveId(id);
     if (id !== "branches") setSelectedBranchId(null);
     if (id !== "students" && id !== "children") setSelectedStudentId(null);
@@ -427,6 +439,11 @@ export default function DashboardLayout({ config, sidebarNav }) {
 
   return (
     <div className="dashboard-shell min-h-svh bg-[#F0F0EB] p-3 md:p-5">
+      <dialog ref={mobileMenuRef} id="mobile-navigation" className="mobile-navigation-dialog" aria-label="Main navigation" onClick={event => {
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      }}>
+        <Sidebar mobile sidebarNav={sidebarNav} onLogout={() => { mobileMenuRef.current?.close(); signOut(); }} collapsed={false} onToggleCollapse={() => mobileMenuRef.current?.close()} activeId={effectiveActiveId} onSelect={handleSelectNav} />
+      </dialog>
       <div className="mx-auto flex min-h-[calc(100svh-2.5rem)] max-w-[1440px] gap-3 md:gap-4">
         <Sidebar
           sidebarNav={sidebarNav}
@@ -437,8 +454,9 @@ export default function DashboardLayout({ config, sidebarNav }) {
           onSelect={handleSelectNav}
         />
 
-        <div className="flex min-w-0 flex-1 flex-col px-4 py-4 md:px-6 md:py-5">
+        <div className="portal-content flex min-w-0 flex-1 flex-col px-4 py-4 md:px-6 md:py-5">
           <Header
+            onOpenMenu={() => mobileMenuRef.current?.showModal()}
             onProfile={() => handleSelectNav("my-profile")}
             pageTitle={pageTitle}
             userName={userName}
